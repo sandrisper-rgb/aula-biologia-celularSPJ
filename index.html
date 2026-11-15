@@ -81,7 +81,34 @@ footer{color:var(--soft)}
 .g1-summary{margin-top:16px}
 .g1-source{color:#4b5c72;font-size:.88rem;margin:15px 0 0}
 @media(max-width:820px){.g1-grid{grid-template-columns:1fr}}
-</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
+
+#rueda{--green:#56369a;--line:#dbd1eb}
+.wheel-grid{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(0,1fr);gap:16px;align-items:start;margin:18px 0}
+.wheel-figure{padding:clamp(4px,1.3vw,16px);background:radial-gradient(ellipse,#fff,#f5f1fc)}
+#wheel-art svg{display:block;width:100%;height:auto;overflow:visible}
+.wheel-side{background:#fff}
+.wheel-node{cursor:pointer}
+.wheel-node .wheel-ring{fill:#fff;stroke:#d4cee3;stroke-width:1.5}
+.wheel-node:hover .wheel-ring,.wheel-node:focus-visible .wheel-ring{stroke:#442b78;stroke-width:3}
+.wheel-node[aria-pressed=true] .wheel-ring{stroke:#56369a;stroke-width:4;fill:#f2eafe}
+.wheel-node text{fill:#26324d;font-weight:750}
+.wheel-key{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;font-size:.83rem;padding:5px 0 10px}
+.wheel-key span{border-radius:20px;padding:3px 12px;font-weight:700}
+.wheel-key .inter,.wheel-pill.inter{background:#dff3ed;color:#195e55}
+.wheel-key .mit,.wheel-pill.mit{background:#eee4fa;color:#4b3181}
+@media(max-width:850px){.wheel-grid{grid-template-columns:1fr}}
+
+
+.mitosis-head{margin-top:30px}
+.mitosis-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.mitosis-card{padding:16px;display:flex;flex-direction:column;align-items:stretch;background:linear-gradient(#f5effc 0 46%,#fff 75%)}
+.mitosis-card svg{width:100%;max-height:145px;display:block}
+.mitosis-card h4{margin:5px 0 7px;color:#442b78;font-size:1.07rem}
+.mitosis-card p{font-size:.91rem;color:#36495f;margin:0}
+.mitosis-card .mitosis-zoom{font-size:.89rem;color:#4b3181;margin-top:auto;padding-top:10px;align-self:start}
+@media(max-width:730px){.mitosis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:475px){.mitosis-grid{grid-template-columns:1fr}}
+</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#rueda">Rueda del ciclo</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
 <section id="tableros"><div class="eyebrow">Laboratorio visual · Maestría</div><h2>Arma el esquema</h2><p>Arrastra las fichas del panel lateral o toca una ficha y después su destino. Puedes moverlas antes de comprobar. El esquema es didáctico y no está a escala.</p><div id="boardTabs" class="tabs" aria-label="Actividad visual"></div><div id="board"></div></section><section id="mision"><div class="eyebrow">Misión / Simulación guiada</div><h2>Supervisa la división celular</h2><p class="read">En cada ronda, elige una prueba, interpreta el resultado y decide si la célula puede avanzar. Todos los datos son simulados.</p><div id="missionTabs" class="tabs" aria-label="Rondas"></div><article class="card" id="missionBody"></article></section>
 <section id="reto-g1">
   <div class="eyebrow">Reto molecular · G₁</div>
@@ -95,6 +122,23 @@ footer{color:var(--soft)}
     <p class="g1-source">Lectura previa · Marg Sonnenfeld (2024), Thompson Rivers University, <a href="https://cellandmolecularbiology.pressbooks.tru.ca/chapter/4-3/">The Cell Cycle and its Regulation</a>, sección 4.3, figuras 8, 12 y 13. Esquema y actividad originales.</p>
   </article>
 </section>
+
+<section id="rueda">
+ <div class="eyebrow">Atlas interactivo · Ciclo celular</div><h2>De una célula a dos</h2>
+ <p class="read">Selecciona una célula de la rueda para ver qué cambia en el ADN, el núcleo y el huso. La rueda muestra el orden de los eventos, no cuánto duran.</p>
+ <div class="wheel-grid">
+ <div class="card wheel-figure"><div id="wheel-art"></div><div class="wheel-key"><span class="inter">Interfase</span><span class="mit">Fase M</span></div></div>
+ <aside class="card wheel-side"><div id="wheel-detail" tabindex="-1" aria-live="polite"></div>
+ <div class="tools"><button type="button" id="wheel-back">← Anterior</button><button type="button" class="primary" id="wheel-next">Siguiente →</button></div>
+ <details><summary>¿Y si la célula sale hacia G₀?</summary><p>Desde G₁, algunas células salen del ciclo. La quiescencia puede ser reversible y no es sinónimo de diferenciación.</p></details></aside>
+ </div>
+
+ <h3 class="mitosis-head">Mitosis y citocinesis, paso a paso</h3>
+ <p class="read">Compara los esquemas de una célula animal. La citocinesis puede comenzar antes de que termine la mitosis.</p>
+ <div class="mitosis-grid" id="mitosis-panels"></div>
+ <p class="caption">Ilustración original, no a escala. Lectura de apoyo: <a href="https://cellandmolecularbiology.pressbooks.tru.ca/chapter/4-3/">Sonnenfeld (2024), §4.3</a>. Para profundizar en centríolos y PLK4: <a href="https://doi.org/10.1038/nrm.2017.127">Nigg y Holland (2018)</a>.</p>
+</section>
+
 <section id="mapa"><div class="eyebrow">01 / Mapa interactivo</div><h2>Una fase a la vez</h2><p class="read">Selecciona una fase y sigue el contenido de ADN por célula diploide.</p><div class="tabs" id="phases" aria-label="Fases del ciclo"></div><div class="map"><div class="dial"><svg viewBox="0 0 340 300" role="img" aria-labelledby="dialTitle"><title id="dialTitle">G1, S, G2 y M forman el ciclo. G0 es una salida desde G1.</title><defs><marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8266b0"/></marker></defs><g stroke="#8266b0" stroke-width="2.5" fill="none" marker-end="url(#tip)"><path d="M178 54Q226 62 249 107"/><path d="M255 152Q239 201 185 220"/><path d="M126 220Q79 207 61 154"/><path d="M61 107Q85 63 129 54"/><path d="M183 43H270" stroke-dasharray="4 4"/></g><g id="dialNodes" font-family="system-ui" font-size="22" font-weight="700" text-anchor="middle"></g><circle cx="157" cy="132" r="39" fill="#e4d7f8"/><path d="M137 115Q180 118 140 148M178 115Q135 120 175 148" fill="none" stroke="#56369a" stroke-width="3"/><text x="159" y="277" font-family="system-ui" font-size="13" fill="#49605b" text-anchor="middle">G₀ no es una fase obligatoria del ciclo</text></svg></div><article class="card" id="phaseDetail" aria-live="polite"></article></div></section>
 <section id="casos"><div class="eyebrow">02 / Predicción</div><h2>¿Avanza o se detiene?</h2><p class="read">Escoge un caso. Defiende tu predicción antes de comprobarla.</p><div id="caseTabs" class="cases"></div><article class="card" id="caseBody"></article></section>
 <section id="datos"><div class="eyebrow">03 / Datos simulados</div><h2>Más células 4C. ¿Y ahora?</h2><p class="read">Una población diploide se analizó tras un tratamiento. Compara las distribuciones antes de sacar conclusiones.</p><article class="card"><div class="tabs" id="plotTabs"></div><div id="plot" class="graph"></div><p id="plotCaption" class="caption" aria-live="polite"></p><div id="dataQ"></div></article></section>
@@ -209,4 +253,64 @@ document.querySelectorAll('.g1-card').forEach((card,i)=>{
  card.querySelector('.g1-reset').addEventListener('click',()=>{fields.forEach(el=>el.selectedIndex=0);msg.textContent='';fields[0].focus();});
 });
 renderQuestion(document.getElementById('g1-edu'),['Ambos cultivos muestran menos células EdU⁺ tras el pulso. ¿Qué conclusión está respaldada por ese dato?',['El daño del ADN activó p53 en ambos cultivos.','Una menor fracción de células incorporó EdU durante el pulso, pero ese dato no identifica la vía responsable.','La disminución de EdU demuestra que RB no participa en la respuesta al daño.'],1,['EdU no mide la activación de p53.','Correcto. Ambos mecanismos pueden reducir la fracción EdU⁺. Necesitas otra lectura y controles para diferenciarlos.','EdU no informa directamente sobre el estado de RB.']]);
+
+const wheelStages=[
+ ['G₁','2C por célula','El núcleo está íntegro y la cromatina descondensada. La célula crece y responde a señales proliferativas.','Los complejos ciclina–CDK regulan la actividad de RB–E2F y favorecen la entrada en S.'],
+ ['S','2C → 4C por célula','Se replica el ADN. Al terminar, cada cromosoma tiene dos cromátidas hermanas. Se inicia la formación de nuevos centríolos alrededor de G₁/S.','PLK4 participa en el inicio de la duplicación de los centríolos. ATR–CHK1 puede frenar la progresión si hay estrés replicativo.'],
+ ['G₂','4C por célula','El ADN ya se replicó y la cromatina sigue descondensada. La célula se prepara para la mitosis.','La activación de ciclina B–CDK1 impulsa la entrada en fase M.'],
+ ['Profase','4C por célula','Los cromosomas se condensan. Los centrosomas se separan y empieza a organizarse el huso.','La envoltura nuclear todavía se distingue en este esquema.'],
+ ['Prometafase','4C por célula','Se desensambla la envoltura nuclear y los microtúbulos del huso empiezan a unirse a los cinetocoros.','Un cinetocoro no unido puede mantener activo el punto de control del huso.'],
+ ['Metafase','4C por célula','Los cromosomas están alineados en la placa metafásica. Idealmente, las cromátidas hermanas están conectadas a polos opuestos.','Al satisfacerse el punto de control del huso, APC/C–Cdc20 favorece la degradación de securina.'],
+ ['Anafase','4C en la célula · 2C hacia cada polo','Las cromátidas hermanas se separan y se desplazan hacia polos opuestos.','La separasa corta la cohesina que mantenía juntas a las cromátidas hermanas.'],
+ ['Telofase','2C por núcleo nuevo','Se reconstituye la envoltura nuclear alrededor de cada grupo de cromosomas y comienza la descondensación.','La citocinesis se superpone con las etapas finales de la mitosis.'],
+ ['Citocinesis','2C por célula hija al finalizar','El surco de división separa el citoplasma. El puente entre las células se corta al finalizar la separación.','Cada célula hija puede iniciar una nueva G₁.']
+];
+const wheelCoords=[[360,84],[546,127],[635,273],[596,441],[461,552],[257,552],[123,441],[85,273],[174,127]];
+const wheelArt=document.getElementById('wheel-art');
+const wheelChrom=(x,y,rot=0)=>'<path transform="translate('+x+' '+y+') rotate('+rot+')" d="M-4 -6L4 6M4 -6L-4 6" fill="none" stroke="#6053a6" stroke-width="3" stroke-linecap="round"/>';
+function wheelCell(i){
+ const shell=(i===7?'<path d="M-5 -23C-35 -36 -48 -4 -32 15Q-22 28 -6 19Q0 15 6 19Q22 28 32 15C48 -4 35 -36 5 -23Q0 -19 -5 -23Z"/>':i===8?'<ellipse cx="-20" cy="0" rx="17" ry="22"/><ellipse cx="20" cy="0" rx="17" ry="22"/>':i===6?'<ellipse rx="39" ry="27"/>':'<ellipse rx="35" ry="28"/>');
+ const outline='<g fill="'+(i<3?'#d3eee9':'#e9def9')+'" stroke="'+(i<3?'#448981':'#7964aa')+'" stroke-width="1.5">'+shell+'</g>';
+ const nucleus=(x,y,r)=>'<circle cx="'+x+'" cy="'+y+'" r="'+r+'" fill="#f7f3ff" stroke="#8577ad" stroke-width="1.4"/>';
+ const squiggle=(x,y)=>'<path transform="translate('+x+' '+y+')" d="M-8 1q4-12 9-2t8 0m-17 4q6-7 11 1t5-2" fill="none" stroke="#7863a8" stroke-width="1.6" stroke-linecap="round"/>';
+ const dots=(xs)=>xs.map(x=>'<circle cx="'+x+'" cy="0" r="3.1" fill="#a75b35" stroke="#fff" stroke-width=".7"/>').join('');
+ let inner='';
+ if(i<3){inner=nucleus(0,0,16)+squiggle(0,0)+(i===1?squiggle(0,6):'')+dots(i===0?[24]:[-24,24]);}
+ if(i===3){inner=nucleus(0,0,17)+[[-7,-6,10],[7,0,-30],[0,7,15]].map(x=>wheelChrom(...x)).join('')+dots([-27,27]);}
+ if(i>=4&&i<=6){
+  const pairs=i===4?[[-12,-10,10],[7,-2,-30],[2,11,20]]:[[0,-12,0],[0,0,0],[0,12,0]];
+  inner='<g fill="none" stroke="#528887" stroke-width="1" opacity=".72">'+[-1,1].map(s=>[-13,0,13].map((y,j)=>'<path d="M'+(s*27)+' 0 Q'+(s*13)+' '+(y*1.6)+' '+(i===6?s*14:pairs[j][0])+' '+(i===4?pairs[j][1]:y)+'"/>').join('')).join('')+'</g>'+dots([-27,27]);
+  inner+=i===6?'<g stroke="#6053a6" stroke-width="3" fill="none" stroke-linecap="round">'+[-1,1].map(s=>[-12,0,12].map(y=>'<path transform="translate('+(s*13)+' '+y+') scale('+s+' 1)" d="M-4 -4L2 0L-4 4"/>').join('')).join('')+'</g>':pairs.map(x=>wheelChrom(...x)).join('');
+ }
+ if(i>=7){inner=(i===7?[-18,18]:[-20,20]).map(x=>nucleus(x,0,11)+'<g transform="translate('+x+' 0) scale(.72)">'+squiggle(0,0)+'</g>').join('');}
+ return outline+inner;
+}
+wheelArt.innerHTML='<svg viewBox="0 0 720 620" role="group" aria-label="Rueda interactiva desde G₁ hasta citocinesis"><defs><marker id="wheel-tip" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#81749b"/></marker></defs><ellipse cx="360" cy="319" rx="228" ry="187" fill="none" stroke="#ddd4ed" stroke-width="2" stroke-dasharray="4 9"/><g fill="none" stroke="#81749b" stroke-width="2.4" marker-end="url(#wheel-tip)">'+wheelCoords.map(([x,y],i)=>{const [u,v]=wheelCoords[(i+1)%wheelCoords.length],d=Math.hypot(u-x,v-y),a=60/d,b=(d-66)/d;return '<path d="M'+(x+a*(u-x))+' '+(y+a*(v-y))+' L'+(x+b*(u-x))+' '+(y+b*(v-y))+'"/>';}).join('')+'</g><circle cx="360" cy="319" r="107" fill="#fff" stroke="#d5c9ea" stroke-width="2"/><text x="360" y="298" text-anchor="middle" font-size="17" letter-spacing="2" fill="#624990">CICLO CELULAR</text><text x="360" y="331" text-anchor="middle" font-size="28" font-weight="750" fill="#262345">G₁ → S → G₂ → M</text><text x="360" y="356" text-anchor="middle" font-size="15" fill="#4b5c72">Selecciona una etapa</text>'+wheelStages.map((s,i)=>'<g class="wheel-node" data-stage="'+i+'" transform="translate('+wheelCoords[i].join(' ')+')" tabindex="0" role="button" aria-pressed="false" aria-label="'+s[0]+'"><circle class="wheel-ring" r="51"/>'+wheelCell(i)+'<text x="0" y="45" text-anchor="middle" font-size="15">'+s[0]+'</text></g>').join('')+'</svg>';
+let wheelIndex=0;
+function wheelSelect(i){
+ wheelIndex=(i+wheelStages.length)%wheelStages.length;
+ const [name,dna,body,note]=wheelStages[wheelIndex];
+ wheelArt.querySelectorAll('.wheel-node').forEach((n,k)=>n.setAttribute('aria-pressed',k===wheelIndex?'true':'false'));
+ document.getElementById('wheel-detail').innerHTML='<span class="tag wheel-pill '+(wheelIndex<3?'inter':'mit')+'">'+(wheelIndex<3?'Interfase':'Fase M')+' · '+(wheelIndex+1)+' de '+wheelStages.length+'</span><h3>'+name+'</h3><p><strong>Contenido de ADN</strong><br>'+dna+'</p><p>'+body+'</p><p class="result">'+note+'</p>';
+}
+wheelArt.querySelectorAll('.wheel-node').forEach((n,i)=>{n.onclick=()=>wheelSelect(i);n.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();wheelSelect(i);}};});
+document.getElementById('wheel-back').onclick=()=>wheelSelect(wheelIndex-1);
+document.getElementById('wheel-next').onclick=()=>wheelSelect(wheelIndex+1);
+wheelSelect(0);
+const mitosisPanels=document.getElementById('mitosis-panels');
+const mitosisCaptions=[
+ 'La cromatina se condensa en cromosomas y empieza a formarse el huso.',
+ 'Se desarma la envoltura nuclear y los microtúbulos se unen a los cinetocoros.',
+ 'Los cromosomas se alinean en la placa metafásica.',
+ 'Las cromátidas hermanas se separan y migran hacia polos opuestos.',
+ 'Se reconstruyen los dos núcleos y los cromosomas se descondensan.',
+ 'El surco de división separa el citoplasma en dos células hijas.'
+];
+mitosisPanels.innerHTML=mitosisCaptions.map((caption,j)=>{
+ const i=j+3,name=wheelStages[i][0];
+ return '<article class="card mitosis-card"><svg viewBox="-53 -37 106 74" aria-hidden="true">'+wheelCell(i)+'</svg><h4>0'+(j+1)+' · '+name+'</h4><p>'+caption+'</p><a class="mitosis-zoom" href="#rueda" data-mitosis="'+i+'">Ver '+name.toLowerCase()+' en la rueda ↑</a></article>';
+}).join('');
+mitosisPanels.querySelectorAll('[data-mitosis]').forEach(link=>link.onclick=()=>{wheelSelect(Number(link.dataset.mitosis));document.getElementById('wheel-detail').focus({preventScroll:true});});
+
+
 </script></body></html>
