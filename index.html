@@ -108,7 +108,22 @@ footer{color:var(--soft)}
 .mitosis-card .mitosis-zoom{font-size:.89rem;color:#4b3181;margin-top:auto;padding-top:10px;align-self:start}
 @media(max-width:730px){.mitosis-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:475px){.mitosis-grid{grid-template-columns:1fr}}
-</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#rueda">Rueda del ciclo</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
+
+#complejos-cdk{--green:#56369a;--line:#d7c9eb}
+.cdk-panel{background:linear-gradient(145deg,#f6efff,#fff 52%)}
+.cdk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:14px}
+.cdk-panel fieldset{border:1px solid var(--line);border-radius:12px;min-width:0;margin:0;padding:12px}
+.cdk-panel legend{padding:0 5px;font-weight:720;color:#442b78}
+.cdk-bank{display:flex;gap:6px;flex-wrap:wrap}
+.cdk-bank button{padding:7px 10px;font-size:.88rem}
+.cdk-bank button[aria-pressed=true]{background:#56369a;color:#fff}
+.cdk-slot{margin-top:9px;border:2px dashed #a88dcf;border-radius:9px;padding:8px;min-height:42px;color:#41276f;background:#faf7ff}
+.cdk-slot.filled{border-style:solid;background:#eee3fc;font-weight:750}
+.cdk-feedback:empty{display:none}
+.cdk-final{margin:14px 0}
+@media(max-width:650px){.cdk-grid{grid-template-columns:1fr}}
+
+</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#rueda">Rueda del ciclo</a><a href="#complejos-cdk">Ciclinas y CDK</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
 <section id="tableros"><div class="eyebrow">Laboratorio visual · Maestría</div><h2>Arma el esquema</h2><p>Arrastra las fichas del panel lateral o toca una ficha y después su destino. Puedes moverlas antes de comprobar. El esquema es didáctico y no está a escala.</p><div id="boardTabs" class="tabs" aria-label="Actividad visual"></div><div id="board"></div></section><section id="mision"><div class="eyebrow">Misión / Simulación guiada</div><h2>Supervisa la división celular</h2><p class="read">En cada ronda, elige una prueba, interpreta el resultado y decide si la célula puede avanzar. Todos los datos son simulados.</p><div id="missionTabs" class="tabs" aria-label="Rondas"></div><article class="card" id="missionBody"></article></section>
 <section id="reto-g1">
   <div class="eyebrow">Reto molecular · G₁</div>
@@ -127,7 +142,7 @@ footer{color:var(--soft)}
  <div class="eyebrow">Atlas interactivo · Ciclo celular</div><h2>De una célula a dos</h2>
  <p class="read">Selecciona una célula de la rueda para ver qué cambia en el ADN, el núcleo y el huso. La rueda muestra el orden de los eventos, no cuánto duran.</p>
  <div class="wheel-grid">
- <div class="card wheel-figure"><div id="wheel-art"></div><div class="wheel-key"><span class="inter">Interfase</span><span class="mit">Fase M</span></div></div>
+ <div class="card wheel-figure"><div id="wheel-art"></div><p class="caption"><a href="#complejos-cdk">Armar complejos ciclina–CDK ↓</a></p><div class="wheel-key"><span class="inter">Interfase</span><span class="mit">Fase M</span></div></div>
  <aside class="card wheel-side"><div id="wheel-detail" tabindex="-1" aria-live="polite"></div>
  <div class="tools"><button type="button" id="wheel-back">← Anterior</button><button type="button" class="primary" id="wheel-next">Siguiente →</button></div>
  <details><summary>¿Y si la célula sale hacia G₀?</summary><p>Desde G₁, algunas células salen del ciclo. La quiescencia puede ser reversible y no es sinónimo de diferenciación.</p></details></aside>
@@ -137,6 +152,30 @@ footer{color:var(--soft)}
  <p class="read">Compara los esquemas de una célula animal. La citocinesis puede comenzar antes de que termine la mitosis.</p>
  <div class="mitosis-grid" id="mitosis-panels"></div>
  <p class="caption">Ilustración original, no a escala. Lectura de apoyo: <a href="https://cellandmolecularbiology.pressbooks.tru.ca/chapter/4-3/">Sonnenfeld (2024), §4.3</a>. Para profundizar en centríolos y PLK4: <a href="https://doi.org/10.1038/nrm.2017.127">Nigg y Holland (2018)</a>.</p>
+</section>
+
+
+<section id="complejos-cdk">
+  <div class="eyebrow">Laboratorio molecular · Ciclo celular</div>
+  <h2>¿Con qué CDK se une esta ciclina?</h2>
+  <p class="read">Selecciona una fase o transición. Arrastra una ciclina y una CDK a sus espacios, o simplemente pulsa cada ficha. Luego predice qué proceso favorece el complejo.</p>
+  <div class="tabs" id="cdk-fases" aria-label="Momentos del ciclo"></div>
+  <article class="card cdk-panel">
+    <h3 id="cdk-momento"></h3>
+    <div class="cdk-grid">
+      <fieldset><legend>Ciclinas</legend><div class="cdk-bank" id="cdk-ciclinas"></div><div class="cdk-slot" id="cdk-slot-ciclina" aria-live="polite">Espacio para la ciclina</div></fieldset>
+      <fieldset><legend>Quinasas dependientes de ciclina</legend><div class="cdk-bank" id="cdk-quinasas"></div><div class="cdk-slot" id="cdk-slot-quinasa" aria-live="polite">Espacio para la CDK</div></fieldset>
+    </div>
+    <div id="cdk-prediccion"></div>
+    <div class="tools"><button class="primary" id="cdk-check" type="button">Comprobar complejo</button><button id="cdk-clear" type="button">Reiniciar fase</button></div>
+    <p class="result cdk-feedback" id="cdk-response" role="status"></p>
+  </article>
+  <article class="card cdk-panel cdk-final">
+    <h3>Reto de maestría · ¿Presente o activa?</h3>
+    <p>En células en G₂ detectas mucha ciclina B1, pero no observas entrada en mitosis. ¿Qué medirías para saber si CDK1 sigue inhibida?</p>
+    <details><summary>Ver una respuesta razonada</summary><p>Evalúa la fosforilación inhibitoria de CDK1 (por ejemplo, Tyr15) y, si es posible, mide directamente la actividad quinasa del complejo ciclina B1–CDK1. Compara con un control de entrada en mitosis. La cantidad de ciclina B1, por sí sola, no mide la actividad del complejo.</p></details>
+  </article>
+  <p class="caption">Se muestran asociaciones representativas de cada momento, no parejas exclusivas. Lectura: <a href="https://doi.org/10.1038/s41392-024-02080-z">Pellarin et al. (2025), Signal Transduction and Targeted Therapy</a>.</p>
 </section>
 
 <section id="mapa"><div class="eyebrow">01 / Mapa interactivo</div><h2>Una fase a la vez</h2><p class="read">Selecciona una fase y sigue el contenido de ADN por célula diploide.</p><div class="tabs" id="phases" aria-label="Fases del ciclo"></div><div class="map"><div class="dial"><svg viewBox="0 0 340 300" role="img" aria-labelledby="dialTitle"><title id="dialTitle">G1, S, G2 y M forman el ciclo. G0 es una salida desde G1.</title><defs><marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8266b0"/></marker></defs><g stroke="#8266b0" stroke-width="2.5" fill="none" marker-end="url(#tip)"><path d="M178 54Q226 62 249 107"/><path d="M255 152Q239 201 185 220"/><path d="M126 220Q79 207 61 154"/><path d="M61 107Q85 63 129 54"/><path d="M183 43H270" stroke-dasharray="4 4"/></g><g id="dialNodes" font-family="system-ui" font-size="22" font-weight="700" text-anchor="middle"></g><circle cx="157" cy="132" r="39" fill="#e4d7f8"/><path d="M137 115Q180 118 140 148M178 115Q135 120 175 148" fill="none" stroke="#56369a" stroke-width="3"/><text x="159" y="277" font-family="system-ui" font-size="13" fill="#49605b" text-anchor="middle">G₀ no es una fase obligatoria del ciclo</text></svg></div><article class="card" id="phaseDetail" aria-live="polite"></article></div></section>
@@ -312,5 +351,66 @@ mitosisPanels.innerHTML=mitosisCaptions.map((caption,j)=>{
 }).join('');
 mitosisPanels.querySelectorAll('[data-mitosis]').forEach(link=>link.onclick=()=>{wheelSelect(Number(link.dataset.mitosis));document.getElementById('wheel-detail').focus({preventScroll:true});});
 
+
+
+const cdkRounds=[
+ {phase:'G₁',c:'D',k:['CDK4','CDK6'],p:0,why:'Ciclina D–CDK4 y ciclina D–CDK6 son dos complejos alternativos de G₁. Participan en la regulación de RB–E2F en respuesta a señales proliferativas.'},
+ {phase:'G₁/S',c:'E',k:['CDK2'],p:2,why:'Ciclina E–CDK2 favorece la transición G₁/S y contribuye a iniciar la replicación.'},
+ {phase:'S',c:'A2',k:['CDK2'],p:1,why:'Durante S, ciclina A2–CDK2 favorece la progresión de la replicación y ayuda a evitar que los orígenes vuelvan a activarse.'},
+ {phase:'S tardía / G₂',c:'A2',k:['CDK1'],p:3,why:'Ciclina A2 también puede unirse a CDK1 hacia el final de S y en G₂, y el complejo contribuye a preparar la entrada en mitosis.'},
+ {phase:'G₂/M',c:'B',k:['CDK1'],p:4,why:'Al activarse, ciclina B–CDK1 impulsa la entrada en mitosis. Que se acumule ciclina B en G₂ no basta para demostrar que CDK1 está activa.'}
+];
+const cdkProcesses=['Responder a mitógenos y regular RB–E2F','Sostener la replicación y ayudar a impedir su reinicio en los mismos orígenes','Favorecer la entrada en fase S e iniciar la replicación','Preparar la entrada en mitosis','Impulsar la transición a mitosis'];
+const cdkChoices={ciclina:['A2','B','D','E'],quinasa:['CDK1','CDK2','CDK4','CDK6']};
+const cdkStates=cdkRounds.map(()=>({ciclina:null,quinasa:null,proceso:null}));
+let cdkPhase=0;
+const cdkEl=id=>document.getElementById(id);
+const cdkLabel=(kind,v)=>kind==='ciclina'?'Ciclina '+v:v;
+function cdkRefresh(){
+ const st=cdkStates[cdkPhase];
+ for(const kind of Object.keys(cdkChoices)){
+  const slot=cdkEl('cdk-slot-'+kind);
+  slot.textContent=st[kind]?cdkLabel(kind,st[kind]):kind==='ciclina'?'Espacio para la ciclina':'Espacio para la CDK';
+  slot.classList.toggle('filled',Boolean(st[kind]));
+  cdkEl(kind==='ciclina'?'cdk-ciclinas':'cdk-quinasas').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.choice===st[kind])));
+ }
+ cdkEl('cdk-response').textContent='';
+}
+function cdkPlace(kind,v){if(!cdkChoices[kind]?.includes(v))return;cdkStates[cdkPhase][kind]=v;cdkRefresh();}
+Object.keys(cdkChoices).forEach(kind=>{
+ const bank=cdkEl(kind==='ciclina'?'cdk-ciclinas':'cdk-quinasas');
+ const slot=cdkEl('cdk-slot-'+kind);
+ cdkChoices[kind].forEach(v=>{
+  const b=document.createElement('button');b.type='button';b.draggable=true;b.dataset.choice=v;b.textContent=cdkLabel(kind,v);
+  b.onclick=()=>cdkPlace(kind,v);
+  b.ondragstart=e=>{e.dataTransfer.setData('text/plain',kind+':'+v);e.dataTransfer.effectAllowed='copy';};
+  bank.append(b);
+ });
+ slot.ondragover=e=>e.preventDefault();
+ slot.ondrop=e=>{e.preventDefault();const [k,v]=e.dataTransfer.getData('text/plain').split(':');if(k===kind)cdkPlace(kind,v);};
+});
+cdkEl('cdk-prediccion').innerHTML='<fieldset><legend>¿Qué proceso favorece principalmente este complejo en esta fase?</legend>'+cdkProcesses.map((p,i)=>'<label class="choice"><input type="radio" name="cdk-proceso" value="'+i+'"> '+p+'</label>').join('')+'</fieldset>';
+const cdkRadios=[...cdkEl('cdk-prediccion').querySelectorAll('input')];
+cdkRadios.forEach(r=>r.onchange=()=>{cdkStates[cdkPhase].proceso=Number(r.value);cdkEl('cdk-response').textContent='';});
+function cdkSelect(i){
+ cdkPhase=i;
+ cdkEl('cdk-momento').textContent=cdkRounds[i].phase+' · '+(i+1)+' de '+cdkRounds.length;
+ cdkEl('cdk-fases').querySelectorAll('button').forEach((b,j)=>b.setAttribute('aria-pressed',String(i===j)));
+ cdkRadios.forEach((r,j)=>{r.checked=cdkStates[i].proceso===j;});
+ cdkRefresh();
+}
+cdkRounds.forEach((round,i)=>{const b=document.createElement('button');b.type='button';b.textContent=round.phase;b.onclick=()=>cdkSelect(i);cdkEl('cdk-fases').append(b);});
+function cdkVerdict(round,st){
+ if(!st.ciclina||!st.quinasa||st.proceso===null)return 'Selecciona una ciclina, una CDK y un proceso.';
+ const m=Number(st.ciclina===round.c)+Number(round.k.includes(st.quinasa))+Number(st.proceso===round.p);
+ return m===3?'Correcto. '+round.why:m+' de 3 elecciones correctas para esta fase. '+(m===2?'Comprueba si el proceso y el complejo coinciden en el mismo momento del ciclo.':'Revisa qué complejo es más representativo de este momento y qué proceso regula.');
+}
+cdkEl('cdk-check').onclick=()=>{cdkEl('cdk-response').textContent=cdkVerdict(cdkRounds[cdkPhase],cdkStates[cdkPhase]);};
+cdkEl('cdk-clear').onclick=()=>{cdkStates[cdkPhase]={ciclina:null,quinasa:null,proceso:null};cdkSelect(cdkPhase);};
+document.querySelector('.wheel-figure a[href="#complejos-cdk"]').addEventListener('click',()=>{
+ const match=[0,2,3,4][wheelIndex];
+ if(match!==undefined)cdkSelect(match);
+});
+cdkSelect(0);
 
 </script></body></html>
