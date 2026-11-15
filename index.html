@@ -66,8 +66,35 @@ button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{
 #datos .graph{background:#f9f6fe}
 footer{color:var(--soft)}
 @media(max-width:730px){.hero::after{background-position:right -105px top;opacity:.19}.hero{border-radius:18px}}
-</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
+#reto-g1{--green:#56369a;--line:#dbd1eb}
+.g1-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:20px 0}
+.g1-card{background:linear-gradient(132deg,#f1ecfb,#fff 70%)}
+.g1-card:nth-child(2){background:linear-gradient(132deg,#eaf7f3,#fff 70%)}
+.g1-card .tag{background:#e6daf9;color:#382265}
+.g1-card:nth-child(2) .tag{background:#dcf1ea;color:#164d43}
+.g1-order{padding-left:1.45em;margin:14px 0;display:grid;gap:8px}
+.g1-order li::marker{font-weight:800;color:#56369a}
+.g1-order select{width:100%;min-width:0;padding:9px;background:white;color:#18273b;border:1px solid #ad9bc9;border-radius:8px;font:inherit;font-size:.94rem}
+.g1-order select:focus-visible{outline:3px solid #8b3cb0;outline-offset:2px}
+.g1-status{margin-top:10px}
+.g1-status:empty{display:none}
+.g1-summary{margin-top:16px}
+.g1-source{color:#4b5c72;font-size:.88rem;margin:15px 0 0}
+@media(max-width:820px){.g1-grid{grid-template-columns:1fr}}
+</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
 <section id="tableros"><div class="eyebrow">Laboratorio visual · Maestría</div><h2>Arma el esquema</h2><p>Arrastra las fichas del panel lateral o toca una ficha y después su destino. Puedes moverlas antes de comprobar. El esquema es didáctico y no está a escala.</p><div id="boardTabs" class="tabs" aria-label="Actividad visual"></div><div id="board"></div></section><section id="mision"><div class="eyebrow">Misión / Simulación guiada</div><h2>Supervisa la división celular</h2><p class="read">En cada ronda, elige una prueba, interpreta el resultado y decide si la célula puede avanzar. Todos los datos son simulados.</p><div id="missionTabs" class="tabs" aria-label="Rondas"></div><article class="card" id="missionBody"></article></section>
+<section id="reto-g1">
+  <div class="eyebrow">Reto molecular · G₁</div>
+  <h2>Dos señales en G₁, dos mecanismos</h2>
+  <p class="read">Los dos cultivos incorporan menos EdU durante un pulso corto. Reconstruye qué pudo ocurrir en cada uno antes de interpretar el resultado.</p>
+  <div id="g1-paths" class="g1-grid"></div>
+  <article class="card g1-summary">
+    <h3>¿El resultado de EdU basta para distinguir los mecanismos?</h3>
+    <div id="g1-edu"></div>
+    <details><summary>Discutir un experimento de seguimiento</summary><p>Compara ambos cultivos con un control sin perturbación y con mitógenos. Mide p21 y el estado de fosforilación de RB junto con EdU. Un aumento de p21 apoya la activación de esa vía, mientras que una menor fosforilación de RB puede aparecer en ambos casos. Para probar si p21 es necesario en el segundo caso, compara la respuesta al daño con y sin p21 funcional, con controles equivalentes.</p></details>
+    <p class="g1-source">Lectura previa · Marg Sonnenfeld (2024), Thompson Rivers University, <a href="https://cellandmolecularbiology.pressbooks.tru.ca/chapter/4-3/">The Cell Cycle and its Regulation</a>, sección 4.3, figuras 8, 12 y 13. Esquema y actividad originales.</p>
+  </article>
+</section>
 <section id="mapa"><div class="eyebrow">01 / Mapa interactivo</div><h2>Una fase a la vez</h2><p class="read">Selecciona una fase y sigue el contenido de ADN por célula diploide.</p><div class="tabs" id="phases" aria-label="Fases del ciclo"></div><div class="map"><div class="dial"><svg viewBox="0 0 340 300" role="img" aria-labelledby="dialTitle"><title id="dialTitle">G1, S, G2 y M forman el ciclo. G0 es una salida desde G1.</title><defs><marker id="tip" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#8266b0"/></marker></defs><g stroke="#8266b0" stroke-width="2.5" fill="none" marker-end="url(#tip)"><path d="M178 54Q226 62 249 107"/><path d="M255 152Q239 201 185 220"/><path d="M126 220Q79 207 61 154"/><path d="M61 107Q85 63 129 54"/><path d="M183 43H270" stroke-dasharray="4 4"/></g><g id="dialNodes" font-family="system-ui" font-size="22" font-weight="700" text-anchor="middle"></g><circle cx="157" cy="132" r="39" fill="#e4d7f8"/><path d="M137 115Q180 118 140 148M178 115Q135 120 175 148" fill="none" stroke="#56369a" stroke-width="3"/><text x="159" y="277" font-family="system-ui" font-size="13" fill="#49605b" text-anchor="middle">G₀ no es una fase obligatoria del ciclo</text></svg></div><article class="card" id="phaseDetail" aria-live="polite"></article></div></section>
 <section id="casos"><div class="eyebrow">02 / Predicción</div><h2>¿Avanza o se detiene?</h2><p class="read">Escoge un caso. Defiende tu predicción antes de comprobarla.</p><div id="caseTabs" class="cases"></div><article class="card" id="caseBody"></article></section>
 <section id="datos"><div class="eyebrow">03 / Datos simulados</div><h2>Más células 4C. ¿Y ahora?</h2><p class="read">Una población diploide se analizó tras un tratamiento. Compara las distribuciones antes de sacar conclusiones.</p><article class="card"><div class="tabs" id="plotTabs"></div><div id="plot" class="graph"></div><p id="plotCaption" class="caption" aria-live="polite"></p><div id="dataQ"></div></article></section>
@@ -164,4 +191,22 @@ $('#boardCheck').onclick=()=>{checked=true;drawBoard();$('#boardCheck').focus();
 drawBoard();
 
 phase(0);pickCase(0);plot(0);quiz();renderQuestion($('#dataQ'),['¿Qué medición complementaria ayuda a distinguir G₂ de mitosis dentro de la población 4C?',['Repetir solo la tinción de ADN','Medir fosfo-histona H3 (Ser10) junto al contenido de ADN','Medir el número de células sin distinguir fases','Medir únicamente la incorporación de EdU en un pulso corto'],1,['La cantidad de ADN por sí sola no separa G₂ de M.','La fosfo-histona H3 ayuda a identificar células mitóticas dentro de la población 4C. Un aumento de 4C por sí solo no demuestra un bloqueo en mitosis.','El recuento total no informa en qué fase están las células.','Un pulso corto de EdU detecta síntesis de ADN, no distingue por sí solo G₂ de M.']]);
+const g1Cases=[
+ {tag:'Caso A · Señal externa',title:'Retiro de mitógenos',lead:'El retiro ocurre antes del punto de restricción.',steps:['Disminuye la señal mitogénica','Disminuye la actividad de complejos ciclina–CDK de G₁','RB se mantiene menos fosforilada y reprime a E2F','Disminuye la expresión de genes necesarios para entrar en S'],order:[2,0,3,1],note:'Sin la señal proliferativa, se mantiene el freno de RB sobre E2F. El modelo no requiere activar p53.'},
+ {tag:'Caso B · Daño interno',title:'Daño en el ADN',lead:'Los mitógenos siguen presentes. Supón que p53 y p21 son funcionales.',steps:['Se detecta daño en el ADN','p53 se estabiliza y aumenta su actividad','Aumenta la expresión de p21','p21 inhibe complejos ciclina–CDK y se retrasa la entrada en S'],order:[3,1,0,2],note:'La respuesta al daño puede frenar la entrada en S aun con mitógenos presentes. Esta vía también puede mantener activa a RB al reducir la actividad CDK.'}
+];
+document.getElementById('g1-paths').innerHTML=g1Cases.map((c,i)=>'<article class="card g1-card"><span class="tag">'+c.tag+'</span><h3>'+c.title+'</h3><p>'+c.lead+'</p><ol class="g1-order">'+c.steps.map((_,j)=>'<li><select aria-label="Caso '+(i?'B':'A')+', paso '+(j+1)+'"><option value="">Elige el paso '+(j+1)+'</option>'+c.order.map(k=>'<option value="'+k+'">'+c.steps[k]+'</option>').join('')+'</select></li>').join('')+'</ol><div class="tools"><button type="button" class="primary g1-check">Comprobar orden</button><button type="button" class="g1-reset">Reiniciar</button></div><p class="g1-status result" role="status" aria-live="polite"></p></article>').join('');
+document.querySelectorAll('.g1-card').forEach((card,i)=>{
+ const fields=[...card.querySelectorAll('select')], msg=card.querySelector('.g1-status');
+ fields.forEach(el=>el.addEventListener('change',()=>{msg.textContent='';}));
+ card.querySelector('.g1-check').addEventListener('click',()=>{
+   const choices=fields.map(el=>el.value);
+   if(choices.includes('')){msg.textContent='Completa los cuatro pasos antes de comprobar.';return;}
+   if(new Set(choices).size!==fields.length){msg.textContent='Hay pasos repetidos. Usa cada ficha una sola vez.';return;}
+   const matches=choices.filter((v,j)=>Number(v)===j).length;
+   msg.textContent=matches===fields.length?'Secuencia correcta. '+g1Cases[i].note:matches+' de '+fields.length+' pasos están en el lugar correcto. Revisa qué señal inicia la vía y cuál es su efecto final.';
+ });
+ card.querySelector('.g1-reset').addEventListener('click',()=>{fields.forEach(el=>el.selectedIndex=0);msg.textContent='';fields[0].focus();});
+});
+renderQuestion(document.getElementById('g1-edu'),['Ambos cultivos muestran menos células EdU⁺ tras el pulso. ¿Qué conclusión está respaldada por ese dato?',['El daño del ADN activó p53 en ambos cultivos.','Una menor fracción de células incorporó EdU durante el pulso, pero ese dato no identifica la vía responsable.','La disminución de EdU demuestra que RB no participa en la respuesta al daño.'],1,['EdU no mide la activación de p53.','Correcto. Ambos mecanismos pueden reducir la fracción EdU⁺. Necesitas otra lectura y controles para diferenciarlos.','EdU no informa directamente sobre el estado de RB.']]);
 </script></body></html>
