@@ -123,7 +123,29 @@ footer{color:var(--soft)}
 .cdk-final{margin:14px 0}
 @media(max-width:650px){.cdk-grid{grid-template-columns:1fr}}
 
-</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas Sandra Perdomo</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#rueda">Rueda del ciclo</a><a href="#complejos-cdk">Ciclinas y CDK</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
+#entrega-nombre{display:block;width:min(100%,28rem);padding:10px 12px;margin:6px 0 12px;border:1px solid #73619b;border-radius:9px;font:inherit;color:#18273b}
+.entrega-card{background:linear-gradient(135deg,#f3ecfc,#fff 65%)}
+.entrega-estado:empty{display:none}
+#entrega-impresion{display:none}
+@media print{
+ body{background:#fff;color:#000;font:11pt system-ui,sans-serif}
+ body.entrega-print > :not(#entrega-impresion){display:none!important}
+ body.entrega-print #entrega-impresion{display:block;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font:inherit}
+ @page{margin:16mm}
+}
+</style></head><body><header><strong>Biología celular / Aula interactiva</strong><span>Maestría en Ciencias Biomédicas</span></header><main><div class="hero"><div class="eyebrow">Práctica guiada · Uniones y ciclo celular</div><h1>Biología celular</h1><p>Coloca las uniones de un epitelio y reconstruye el ciclo celular. Después, pon a prueba tus predicciones con datos experimentales simulados.</p><nav aria-label="Secciones"><a href="#entrega">Mi entrega</a><a class="primary" href="#tableros">Armar los esquemas →</a><a href="#mision">Iniciar misión →</a><a href="#rueda">Rueda del ciclo</a><a href="#complejos-cdk">Ciclinas y CDK</a><a href="#reto-g1">Reto molecular G₁</a><a href="#mapa">01 · Explorar</a><a href="#casos">02 · Predecir</a><a href="#datos">03 · Interpretar</a><a href="#taller">Diseñar un experimento</a><a href="#quiz">04 · Practicar</a></nav></div>
+<section id="entrega">
+  <div class="eyebrow">Tu trabajo · Entrega individual</div>
+  <h2>Identifica tu entrega</h2>
+  <div class="card entrega-card">
+    <label for="entrega-nombre"><strong>Nombre y apellido</strong></label>
+    <input id="entrega-nombre" type="text" autocomplete="off" maxlength="120" placeholder="Escribe tu nombre y apellido">
+    <p>Escribe tu nombre antes de empezar. No es un inicio de sesión. Puedes descargar un reporte parcial en cualquier momento.</p>
+    <div class="tools"><button type="button" class="primary entrega-descarga">Descargar mi entrega</button><button type="button" class="entrega-pdf">Imprimir o guardar como PDF</button><a href="#tableros">Ir a las actividades ↓</a></div>
+    <p class="entrega-estado" role="status"></p>
+    <p class="caption">Las respuestas permanecen en esta pestaña. Descarga una copia antes de cerrarla o recargar. El aula no envía archivos automáticamente. Sube el reporte al enlace institucional que te indique tu docente.</p>
+  </div>
+</section>
 <section id="tableros"><div class="eyebrow">Laboratorio visual · Maestría</div><h2>Arma el esquema</h2><p>Arrastra las fichas del panel lateral o toca una ficha y después su destino. Puedes moverlas antes de comprobar. El esquema es didáctico y no está a escala.</p><div id="boardTabs" class="tabs" aria-label="Actividad visual"></div><div id="board"></div></section><section id="mision"><div class="eyebrow">Misión / Simulación guiada</div><h2>Supervisa la división celular</h2><p class="read">En cada ronda, elige una prueba, interpreta el resultado y decide si la célula puede avanzar. Todos los datos son simulados.</p><div id="missionTabs" class="tabs" aria-label="Rondas"></div><article class="card" id="missionBody"></article></section>
 <section id="reto-g1">
   <div class="eyebrow">Reto molecular · G₁</div>
@@ -182,7 +204,77 @@ footer{color:var(--soft)}
 <section id="casos"><div class="eyebrow">02 / Predicción</div><h2>¿Avanza o se detiene?</h2><p class="read">Escoge un caso. Defiende tu predicción antes de comprobarla.</p><div id="caseTabs" class="cases"></div><article class="card" id="caseBody"></article></section>
 <section id="datos"><div class="eyebrow">03 / Datos simulados</div><h2>Más células 4C. ¿Y ahora?</h2><p class="read">Una población diploide se analizó tras un tratamiento. Compara las distribuciones antes de sacar conclusiones.</p><article class="card"><div class="tabs" id="plotTabs"></div><div id="plot" class="graph"></div><p id="plotCaption" class="caption" aria-live="polite"></p><div id="dataQ"></div></article></section>
 <section id="taller"><div class="eyebrow">05 / Diseño experimental</div><h2>¿Bloqueo, retraso o selección?</h2><article class="card"><p>Un compuesto eleva la fracción 4C de 22 % a 55 % después de 24 h. La fracción pH3 positiva en 4C baja de 18 % a 5 %. Además, el recuento de células viables cae 30 %. Estos datos son simulados.</p><p><strong>Reto.</strong> Propón dos interpretaciones compatibles con los datos, una medición que las distinga y un control. Explica qué resultado refutaría tu hipótesis.</p><label for="journal"><strong>Tu hipótesis y diseño</strong></label><textarea id="journal" rows="5" placeholder="Mi hipótesis es… La pondría a prueba con…"></textarea><button id="download" type="button">Descargar mi razonamiento</button><details><summary>Comparar con una respuesta modelo</summary><p>La acumulación 4C con menos pH3 es compatible con retraso antes de mitosis, pero también con una pérdida selectiva de otras poblaciones. Una medición en un solo tiempo no distingue retraso de detención sostenida.</p><p>Compara vehículo y tratamiento en varios tiempos, excluye dobletes y mide tanto las fracciones por fase como los recuentos absolutos de células viables. Un seguimiento EdU de pulso y persecución, combinado con ADN y pH3, permite seguir la progresión de una cohorte. Si la cohorte 4C entra en mitosis con una cinética similar al control, se debilita la hipótesis de retraso G₂/M.</p></details></article></section>
-<section id="quiz"><div class="eyebrow">04 / Miniquiz de práctica</div><h2>Ponte a prueba</h2><p class="read">Ocho preguntas. La puntuación es para tu práctica y no se envía a nadie.</p><article class="card" id="quizBody"></article></section></main><footer><p>Material de estudio · Sin cuenta ni registro de notas. Los gráficos son esquemáticos y los datos, simulados.</p><p>Inspiración de la misión: <a href="https://www.labxchange.org/library/items/lb:LabXchange:e5fd7936:lx_simulation:1">LabXchange · Control of the Cell Cycle</a>. Actividad y datos originales. Los tableros retoman los bloques de uniones celulares y control del ciclo del material de clase.</p><p>Lecturas: <a href="https://openstax.org/books/biology-2e/pages/10-3-control-of-the-cell-cycle">OpenStax · Control del ciclo celular</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5580980/">Citometría de flujo con ADN y marcadores mitóticos</a>.</p></footer><script>
+<section id="quiz"><div class="eyebrow">04 / Miniquiz de práctica</div><h2>Ponte a prueba</h2><p class="read">Ocho preguntas. La puntuación es para tu práctica y no se envía a nadie.</p><article class="card" id="quizBody"></article></section><section id="exportar-entrega">
+  <h2>¿Listo para entregar?</h2>
+  <div class="tools"><button type="button" class="primary entrega-descarga">Descargar mi entrega</button><button type="button" class="entrega-pdf">Imprimir o guardar como PDF</button><a href="#entrega">Revisar mi nombre</a></div>
+  <p class="entrega-estado" role="status"></p>
+  <p class="caption">Descarga el reporte, revísalo y súbelo al enlace de entrega que te indique tu docente.</p>
+</section>
+</main><footer><p>Material de estudio · Sin cuenta ni registro de notas. Los gráficos son esquemáticos y los datos, simulados.</p><p>Inspiración de la misión: <a href="https://www.labxchange.org/library/items/lb:LabXchange:e5fd7936:lx_simulation:1">LabXchange · Control of the Cell Cycle</a>. Actividad y datos originales. Los tableros retoman los bloques de uniones celulares y control del ciclo del material de clase.</p><p>Lecturas: <a href="https://openstax.org/books/biology-2e/pages/10-3-control-of-the-cell-cycle">OpenStax · Control del ciclo celular</a> · <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5580980/">Citometría de flujo con ADN y marcadores mitóticos</a>.</p></footer><pre id="entrega-impresion"></pre><script>
+const entrega={fichas:{},preguntas:{},pruebas:{},vias:{},cdk:{}};
+const entregaStore=(group,key,value,checked=false)=>{
+ const item=entrega[group][key]??={};
+ item.actual=value;
+ if(checked){item.primera??=value;item.ultima=value;}
+};
+function entregaPregunta(el,prompt,answer,ok,checked){
+ entregaStore('preguntas',prompt,{answer,ok,kind:el.id},checked);
+}
+function entregaFichas(checkedNow=false){
+ const b=boards[boardIndex];
+ const rows=b.zones.map((z,i)=>[b.hints[i],b.zones.find(k=>k.id===placed[z.id])?.label||'Sin colocar']);
+ entregaStore('fichas',b.title,{rows,score:b.zones.filter(z=>placed[z.id]===z.id).length},checkedNow);
+}
+function entregaVia(i,values,check=false){
+ entregaStore('vias',g1Cases[i].title,{rows:values.map((v,j)=>['Paso '+(j+1),v===''?'Sin elegir':g1Cases[i].steps[Number(v)]]),score:values.filter((v,j)=>v!==''&&Number(v)===j).length},check);
+}
+function entregaCDK(check=false){
+ const r=cdkRounds[cdkPhase], x=cdkStates[cdkPhase];
+ entregaStore('cdk',r.phase,{rows:[['Ciclina',x.ciclina?'Ciclina '+x.ciclina:'Sin elegir'],['CDK',x.quinasa||'Sin elegir'],['Proceso',cdkProcesses[x.proceso]||'Sin elegir']],score:Number(x.ciclina===r.c)+Number(r.k.includes(x.quinasa))+Number(x.proceso===r.p)},check);
+}
+function entregaReport(name){
+ const text=['AULA DE BIOLOGÍA CELULAR · ENTREGA INDIVIDUAL','Nombre declarado: '+name,'Fecha de exportación: '+new Date().toLocaleString('es-CO'),
+ 'Reporte de práctica. Los aciertos son orientativos y no constituyen una nota oficial.','','1. FICHAS DE EPITELIO Y CICLO'];
+ const addGroup=(data,keys)=>keys.forEach(k=>{
+   const item=data[k];text.push(k);
+   if(!item){text.push('  Sin respuesta.');return;}
+   const show=(label,v,score)=>{text.push('  '+label);v.rows.forEach(([a,b])=>text.push('    '+a+' → '+b));if(score)text.push('    Aciertos al comprobar: '+v.score+' de '+v.rows.length);};
+   show('Selección al exportar',item.actual,false);
+   if(item.primera)show('Primera comprobación',item.primera,true);
+   if(item.ultima&&item.primera!==item.ultima)show('Última comprobación',item.ultima,true);
+ });
+ addGroup(entrega.fichas,boards.map(b=>b.title));
+ text.push('','2. CICLINAS Y CDK');addGroup(entrega.cdk,cdkRounds.map(r=>r.phase));
+ text.push('','3. RETO MOLECULAR G₁');addGroup(entrega.vias,g1Cases.map(r=>r.title));
+ text.push('','4. SIMULACIONES · PRUEBAS SOLICITADAS');
+ missions.forEach(m=>text.push(m.title+': '+(entrega.pruebas[m.title]?.actual?.join(' → ')||'Sin respuesta.')));
+ const addQuestions=(kind,title,expected=[])=>{
+   text.push('',title);
+   const keys=[...new Set([...expected,...Object.entries(entrega.preguntas).filter(([,v])=>v.actual.kind===kind).map(([q])=>q)])];
+   if(!keys.length)text.push('Sin respuestas.');
+   keys.forEach(q=>{
+     const v=entrega.preguntas[q];
+     text.push(q);
+     if(!v){text.push('  Sin respuesta.');return;}
+     text.push('  Selección al exportar: '+v.actual.answer);
+     if(v.primera)text.push('  Primera comprobación: '+v.primera.answer+' · '+(v.primera.ok?'correcta':'incorrecta'));
+     if(v.ultima&&v.primera!==v.ultima)text.push('  Última comprobación: '+v.ultima.answer+' · '+(v.ultima.ok?'correcta':'incorrecta'));
+   });
+ };
+ addQuestions('g1-edu','5. RETO G₁ · INTERPRETACIÓN DE EdU');
+ addQuestions('verdict','6. SIMULACIONES · DECISIONES',missions.map(m=>m.q[0]));
+ addQuestions('caseBody','7. CASOS · PREDICCIONES',cases.map(c=>c[1]));
+ addQuestions('dataQ','8. INTERPRETACIÓN DEL HISTOGRAMA');
+ addQuestions('quizQ','9. MINIQUIZ',questions.map(q=>q[0]));
+ const marks=questions.map(q=>entrega.preguntas[q[0]]);
+ text.push('Preguntas comprobadas: '+marks.filter(v=>v?.ultima).length+' de '+questions.length,
+ 'Aciertos en primera comprobación: '+marks.filter(v=>v?.primera?.ok).length+' de '+questions.length,
+ 'Aciertos en última comprobación: '+marks.filter(v=>v?.ultima?.ok).length+' de '+questions.length);
+ text.push('','10. DISEÑO EXPERIMENTAL',($('#journal').value.trim()||'Sin respuesta.'));
+ text.push('','El reporte no se ha enviado. Súbelo al destino indicado por tu docente.');
+ return text.join('\n');
+}
+
 const $=s=>document.querySelector(s);
 const phases=[
 ['G₁','Preparación para replicar','2C','Crecimiento y respuesta a señales de proliferación.','Ciclina D–CDK4/6 y ciclina E–CDK2 favorecen la entrada en S. RB–E2F participa en este control.','Las señales mitogénicas favorecen el compromiso con la proliferación. El daño de ADN puede frenar la entrada en S.'],
@@ -202,7 +294,7 @@ const questions=[
 ['¿Qué diferencia G₀ de una salida irreversible del ciclo?',['G₀ implica que la célula está muerta','En quiescencia, ciertas células pueden reingresar si reciben señales apropiadas','G₀ requiere duplicar todo el ADN','G₀ es un paso obligatorio antes de S'],1,['Una célula quiescente sigue viva.','La quiescencia puede ser reversible en células competentes.','La duplicación del ADN define S.','No todas las células pasan por G₀ antes de proliferar.']]];
 function tabs(container,labels,on,fn){container.innerHTML=labels.map((x,i)=>'<button type="button" aria-pressed="'+(i===on)+'">'+x+'</button>').join('');[...container.children].forEach((b,i)=>b.onclick=()=>{fn(i);container.children[i].focus()});}
 function phase(i){const p=phases[i];tabs($('#phases'),phases.map(x=>x[0]),i,phase);$('#phaseDetail').innerHTML='<span class="tag">ADN: '+p[2]+'</span><h3>'+p[0]+' · '+p[1]+'</h3><p>'+p[3]+'</p><dl class="fields"><div><dt>Regulación</dt><dd>'+p[4]+'</dd></div><div><dt>Control</dt><dd>'+p[5]+'</dd></div></dl>';$('#dialNodes').innerHTML=[[157,49],[257,132],[157,222],[57,132],[298,43]].map(([x,y],j)=>'<g><circle cx="'+x+'" cy="'+y+'" r="'+(j===4?22:25)+'" fill="'+(i===j?'#15574d':'#fff')+'"/><text x="'+x+'" y="'+(y+7)+'" fill="'+(i===j?'white':'#162e2b')+'">'+phases[j][0]+'</text></g>').join('');}
-function renderQuestion(el,q,callback){const [prompt,opts,key,feedback]=q;el.innerHTML='<form><fieldset><legend>'+prompt+'</legend>'+opts.map((o,j)=>'<label class="choice"><input required type="radio" name="answer" value="'+j+'">'+o+'</label>').join('')+'</fieldset><button class="primary" type="submit">Comprobar respuesta</button><div class="feedback" role="status"></div></form>';el.querySelector('form').onsubmit=e=>{e.preventDefault();const selected=Number(new FormData(e.target).get('answer'));const ok=selected===key;const f=el.querySelector('.feedback');f.dataset.good=ok;f.textContent=(ok?'Correcto. ':'Revisa tu predicción. ')+feedback[selected]+(ok?'':' Respuesta esperada: '+opts[key]+'.');if(callback){e.target.querySelectorAll('input,button').forEach(x=>x.disabled=true);callback(ok);}}}
+function renderQuestion(el,q,callback){const [prompt,opts,key,feedback]=q;el.innerHTML='<form><fieldset><legend>'+prompt+'</legend>'+opts.map((o,j)=>'<label class="choice"><input required type="radio" name="answer" value="'+j+'">'+o+'</label>').join('')+'</fieldset><button class="primary" type="submit">Comprobar respuesta</button><div class="feedback" role="status"></div></form>';el.querySelectorAll('input').forEach(x=>x.onchange=()=>entregaPregunta(el,prompt,opts[Number(x.value)],false,false));el.querySelector('form').onsubmit=e=>{e.preventDefault();const selected=Number(new FormData(e.target).get('answer'));const ok=selected===key;entregaPregunta(el,prompt,opts[selected],ok,true);const f=el.querySelector('.feedback');f.dataset.good=ok;f.textContent=(ok?'Correcto. ':'Revisa tu predicción. ')+feedback[selected]+(ok?'':' Respuesta esperada: '+opts[key]+'.');if(callback){e.target.querySelectorAll('input,button').forEach(x=>x.disabled=true);callback(ok);}}}
 function pickCase(i){tabs($('#caseTabs'),cases.map(x=>x[0]),i,pickCase);renderQuestion($('#caseBody'),cases[i].slice(1))}
 function plot(i){tabs($('#plotTabs'),['Control','Tratamiento'],i,plot);const points=[];for(let x=0;x<=100;x++){const g=(m,s)=>Math.exp(-((x-m)**2)/(2*s*s));const y=(i?54:115)*g(21,3.8)+(i?106:43)*g(80,4.5)+13*g(51,16);points.push((65+x*5.2).toFixed(1)+','+(158-y).toFixed(1));}$('#plot').innerHTML='<svg viewBox="0 0 620 215" role="img" aria-label="'+(i?'Histograma del tratamiento: pico 4C mayor que pico 2C':'Histograma control: pico 2C mayor que pico 4C')+'"><path d="M65 158V24M65 158H585" fill="none" stroke="#49605b"/><polyline fill="none" stroke="#56369a" stroke-width="3" points="'+points.join(' ')+'"/><g fill="#162e2b" font-size="15" font-family="system-ui" text-anchor="middle"><text x="175" y="179">2C</text><text x="481" y="179">4C</text><text x="325" y="205">Contenido de ADN por célula</text><text x="25" y="98" transform="rotate(-90 25 98)">Eventos</text></g></svg>';$('#plotCaption').textContent=(i?'Tratamiento: la población 4C aumenta respecto al control.':'Control: predomina el pico 2C.')+' Distribución esquemática, no son datos reales.';}
 let qi=0,score=0;
@@ -223,7 +315,7 @@ const m=missions[i],root=$('#missionBody');tabs($('#missionTabs'),missions.map((
 const colors=['#99c6b1','#e6bb77','#aebcde'];
 const imgs=['<path d="M76 61q47-35 83 9t51-7m-129 37q34 20 63-8t64 9" stroke="#15574d" fill="none" stroke-width="4"/>','<g stroke="#15574d" stroke-width="5" stroke-linecap="round"><path d="m96 56 30 40m0-40-30 40m48-40 30 40m0-40-30 40"/></g>','<g stroke="#15574d" stroke-width="4" fill="none"><path d="M54 78 120 60M54 78l66 14m36-32 70 18m-70 14 70-14m-106-22 36 40m0-40-36 40"/></g><circle cx="54" cy="78" r="7" fill="#15574d"/><circle cx="226" cy="78" r="7" fill="#15574d"/>'];
 root.innerHTML='<div class="mission-layout"><div><span class="tag">Ronda '+(i+1)+' de 3</span><h3>'+m.title+'</h3><p>'+m.summary+'</p><div class="tools" id="probes"></div><p id="evidence" class="result" hidden role="status"></p></div><div class="mini"><svg viewBox="0 0 280 155" role="img" aria-label="Esquema de la transición '+m.title+'"><ellipse cx="140" cy="78" rx="104" ry="64" fill="'+colors[i]+'" stroke="#15574d" stroke-width="2"/>'+imgs[i]+'</svg><small>Esquema conceptual · '+m.title+'</small></div></div><div class="mission-step" id="verdict"></div><div class="tools" id="missionNext"></div>';
-m.probe.forEach((x,j)=>{const b=document.createElement('button');b.type='button';b.textContent=x;b.onclick=()=>{const e=$('#evidence');e.hidden=false;e.textContent=m.out[j]+(j!==m.best?' Solicita una prueba más informativa antes de decidir.':'');if(j===m.best&&!$('#verdict').hasChildNodes())renderQuestion($('#verdict'),m.q,ok=>{const n=$('#missionNext');if(!ok){n.innerHTML='<button type="button">Revisar esta ronda</button>';n.firstChild.onclick=()=>mission(i);return;}completed.add(i);n.innerHTML=i<2?'<button type="button" class="primary">Siguiente ronda →</button>':'<a href="#taller">Ir al reto de diseño experimental →</a>';if(i<2)n.firstChild.onclick=()=>mission(i+1);if(completed.size===3)n.insertAdjacentHTML('beforeend','<strong role="status">Misión completada · 3 de 3 decisiones</strong>');});};$('#probes').append(b);});
+m.probe.forEach((x,j)=>{const b=document.createElement('button');b.type='button';b.textContent=x;b.onclick=()=>{entregaStore('pruebas',m.title,[...(entrega.pruebas[m.title]?.actual||[]),x]);const e=$('#evidence');e.hidden=false;e.textContent=m.out[j]+(j!==m.best?' Solicita una prueba más informativa antes de decidir.':'');if(j===m.best&&!$('#verdict').hasChildNodes())renderQuestion($('#verdict'),m.q,ok=>{const n=$('#missionNext');if(!ok){n.innerHTML='<button type="button">Revisar esta ronda</button>';n.firstChild.onclick=()=>mission(i);return;}completed.add(i);n.innerHTML=i<2?'<button type="button" class="primary">Siguiente ronda →</button>':'<a href="#taller">Ir al reto de diseño experimental →</a>';if(i<2)n.firstChild.onclick=()=>mission(i+1);if(completed.size===3)n.insertAdjacentHTML('beforeend','<strong role="status">Misión completada · 3 de 3 decisiones</strong>');});};$('#probes').append(b);});
 }
 mission(0);
 $('#download').onclick=()=>{const text=$('#journal').value.trim();if(!text){$('#journal').focus();return;}const url=URL.createObjectURL(new Blob(['Ciclo celular · Reto de diseño experimental\n\n'+text],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='razonamiento-ciclo-celular.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
@@ -261,15 +353,15 @@ B('atr','ATR–CHK1',75,47,'Dentro de S, ATR–CHK1 ayuda a responder al estrés
 B('cdk','Ciclina B–CDK1',32,73,'La activación de ciclina B–CDK1 impulsa la entrada en mitosis. El daño o la replicación incompleta pueden retrasarla.'),
 B('sac','Control del huso · APC/C–Cdc20',26,47,'En mitosis, los cinetocoros sin unir inhiben APC/C–Cdc20 y retrasan la anafase.')],hints:['Compromiso hacia S','Estrés dentro de S','Entrada en mitosis','Antes de anafase']}];
 let boardIndex=0,selected=null,placed={},checked=false;
-function boardStart(i){boardIndex=i;selected=null;placed={};checked=false;drawBoard();}
-function setChip(id,slot){const prev=Object.keys(placed).find(k=>placed[k]===id);if(prev===slot){selected=null;drawBoard();return}const displaced=placed[slot];if(prev){if(displaced)placed[prev]=displaced;else delete placed[prev]}placed[slot]=id;selected=null;checked=false;drawBoard();document.getElementById('slot-'+slot).focus();}
+function boardStart(i){boardIndex=i;selected=null;placed={...(entrega.fichas[boards[i].title]?.layout||{})};checked=false;drawBoard();}
+function setChip(id,slot){const prev=Object.keys(placed).find(k=>placed[k]===id);if(prev===slot){selected=null;drawBoard();return}const displaced=placed[slot];if(prev){if(displaced)placed[prev]=displaced;else delete placed[prev]}placed[slot]=id;entrega.fichas[boards[boardIndex].title]??={};entrega.fichas[boards[boardIndex].title].layout={...placed};entregaFichas();selected=null;checked=false;drawBoard();document.getElementById('slot-'+slot).focus();}
 function drawBoard(){const b=boards[boardIndex], root=$('#board');tabs($('#boardTabs'),boards.map(x=>x.title),boardIndex,boardStart);
 const letter=i=>String.fromCharCode(65+i);
 const score=b.zones.filter(z=>placed[z.id]===z.id).length;
 root.innerHTML='<div class="assembly"><div class="card"><div class="canvas">'+b.svg+b.zones.map((z,i)=>'<button type="button" id="slot-'+z.id+'" class="slot '+(placed[z.id]?'filled ':'')+(checked?(placed[z.id]===z.id?'good':'bad'):'')+'" style="left:'+z.x+'%;top:'+z.y+'%" aria-label="'+letter(i)+' · '+b.hints[i]+(placed[z.id]?' · '+b.zones.find(k=>k.id===placed[z.id]).label:' · vacío')+'" data-slot="'+z.id+'">'+letter(i)+'</button>'+(placed[z.id]?'<span class="placed-label '+(i%2?'to-left':'')+'" style="left:'+z.x+'%;top:'+z.y+'%">'+b.zones.find(k=>k.id===placed[z.id]).label+'</span>':'')).join('')+'</div><p class="canvas-key">'+b.tip+'</p><p class="canvas-key">'+b.hints.map((x,i)=>'<strong>'+letter(i)+'</strong> '+x).join(' · ')+'</p></div><aside class="card"><h3>Fichas para colocar</h3><div class="chips">'+[...b.zones].sort((a,b)=>a.label.localeCompare(b.label,'es')).map(z=>{const k=b.zones.findIndex(x=>placed[x.id]===z.id);return '<button type="button" draggable="true" class="chip" id="chip-'+z.id+'" aria-pressed="'+(selected===z.id)+'" data-chip="'+z.id+'">'+z.label+(k>=0?' <small>→ '+letter(k)+'</small>':'')+'</button>';}).join('')+'</div><div class="tools"><button class="primary" id="boardCheck" type="button">Comprobar</button><button id="boardReset" type="button">Reiniciar</button></div><p class="board-status" id="boardStatus" role="status">'+(checked?score+' de '+b.zones.length+' ubicaciones correctas.':Object.keys(placed).length+' de '+b.zones.length+' fichas colocadas.')+'</p></aside></div>'+(checked?'<div class="result"><strong>Retroalimentación</strong><ol type="A">'+b.zones.map(z=>'<li>'+(placed[z.id]===z.id?'Correcto. '+z.why:placed[z.id]?'Revisa la función indicada para este lugar.':'Aún falta una ficha.')+'</li>').join('')+'</ol></div>':'');
 root.querySelectorAll('[data-chip]').forEach(btn=>{btn.onclick=()=>{selected=selected===btn.dataset.chip?null:btn.dataset.chip;drawBoard();document.getElementById('chip-'+btn.dataset.chip).focus();if(selected)$('#boardStatus').textContent='Ficha seleccionada. Elige un destino en la imagen.';};btn.ondragstart=e=>{e.dataTransfer.setData('text/plain',btn.dataset.chip);e.dataTransfer.effectAllowed='move';}});
 root.querySelectorAll('[data-slot]').forEach(btn=>{btn.onclick=()=>{if(selected)setChip(selected,btn.dataset.slot);else if(placed[btn.dataset.slot]){selected=placed[btn.dataset.slot];drawBoard();document.getElementById('slot-'+btn.dataset.slot).focus();$('#boardStatus').textContent='Ficha seleccionada para mover. Elige otro destino.';}else $('#boardStatus').textContent='Selecciona primero una ficha del panel lateral.';};btn.ondragover=e=>{e.preventDefault();e.dataTransfer.dropEffect='move'};btn.ondrop=e=>{e.preventDefault();const id=e.dataTransfer.getData('text/plain');if(b.zones.some(z=>z.id===id))setChip(id,btn.dataset.slot);};});
-$('#boardCheck').onclick=()=>{checked=true;drawBoard();$('#boardCheck').focus();};$('#boardReset').onclick=()=>{boardStart(boardIndex);$('#boardReset').focus();};
+$('#boardCheck').onclick=()=>{checked=true;entregaFichas(true);drawBoard();$('#boardCheck').focus();};$('#boardReset').onclick=()=>{const b=boards[boardIndex];if(entrega.fichas[b.title])entrega.fichas[b.title].layout={};boardStart(boardIndex);entregaFichas();$('#boardReset').focus();};
 }
 drawBoard();
 
@@ -281,15 +373,16 @@ const g1Cases=[
 document.getElementById('g1-paths').innerHTML=g1Cases.map((c,i)=>'<article class="card g1-card"><span class="tag">'+c.tag+'</span><h3>'+c.title+'</h3><p>'+c.lead+'</p><ol class="g1-order">'+c.steps.map((_,j)=>'<li><select aria-label="Caso '+(i?'B':'A')+', paso '+(j+1)+'"><option value="">Elige el paso '+(j+1)+'</option>'+c.order.map(k=>'<option value="'+k+'">'+c.steps[k]+'</option>').join('')+'</select></li>').join('')+'</ol><div class="tools"><button type="button" class="primary g1-check">Comprobar orden</button><button type="button" class="g1-reset">Reiniciar</button></div><p class="g1-status result" role="status" aria-live="polite"></p></article>').join('');
 document.querySelectorAll('.g1-card').forEach((card,i)=>{
  const fields=[...card.querySelectorAll('select')], msg=card.querySelector('.g1-status');
- fields.forEach(el=>el.addEventListener('change',()=>{msg.textContent='';}));
+ fields.forEach(el=>el.addEventListener('change',()=>{entregaVia(i,fields.map(v=>v.value));msg.textContent='';}));
  card.querySelector('.g1-check').addEventListener('click',()=>{
    const choices=fields.map(el=>el.value);
    if(choices.includes('')){msg.textContent='Completa los cuatro pasos antes de comprobar.';return;}
    if(new Set(choices).size!==fields.length){msg.textContent='Hay pasos repetidos. Usa cada ficha una sola vez.';return;}
+   entregaVia(i,choices,true);
    const matches=choices.filter((v,j)=>Number(v)===j).length;
    msg.textContent=matches===fields.length?'Secuencia correcta. '+g1Cases[i].note:matches+' de '+fields.length+' pasos están en el lugar correcto. Revisa qué señal inicia la vía y cuál es su efecto final.';
  });
- card.querySelector('.g1-reset').addEventListener('click',()=>{fields.forEach(el=>el.selectedIndex=0);msg.textContent='';fields[0].focus();});
+ card.querySelector('.g1-reset').addEventListener('click',()=>{fields.forEach(el=>el.selectedIndex=0);entregaVia(i,fields.map(v=>v.value));msg.textContent='';fields[0].focus();});
 });
 renderQuestion(document.getElementById('g1-edu'),['Ambos cultivos muestran menos células EdU⁺ tras el pulso. ¿Qué conclusión está respaldada por ese dato?',['El daño del ADN activó p53 en ambos cultivos.','Una menor fracción de células incorporó EdU durante el pulso, pero ese dato no identifica la vía responsable.','La disminución de EdU demuestra que RB no participa en la respuesta al daño.'],1,['EdU no mide la activación de p53.','Correcto. Ambos mecanismos pueden reducir la fracción EdU⁺. Necesitas otra lectura y controles para diferenciarlos.','EdU no informa directamente sobre el estado de RB.']]);
 
@@ -376,7 +469,7 @@ function cdkRefresh(){
  }
  cdkEl('cdk-response').textContent='';
 }
-function cdkPlace(kind,v){if(!cdkChoices[kind]?.includes(v))return;cdkStates[cdkPhase][kind]=v;cdkRefresh();}
+function cdkPlace(kind,v){if(!cdkChoices[kind]?.includes(v))return;cdkStates[cdkPhase][kind]=v;entregaCDK();cdkRefresh();}
 Object.keys(cdkChoices).forEach(kind=>{
  const bank=cdkEl(kind==='ciclina'?'cdk-ciclinas':'cdk-quinasas');
  const slot=cdkEl('cdk-slot-'+kind);
@@ -391,7 +484,7 @@ Object.keys(cdkChoices).forEach(kind=>{
 });
 cdkEl('cdk-prediccion').innerHTML='<fieldset><legend>¿Qué proceso favorece principalmente este complejo en esta fase?</legend>'+cdkProcesses.map((p,i)=>'<label class="choice"><input type="radio" name="cdk-proceso" value="'+i+'"> '+p+'</label>').join('')+'</fieldset>';
 const cdkRadios=[...cdkEl('cdk-prediccion').querySelectorAll('input')];
-cdkRadios.forEach(r=>r.onchange=()=>{cdkStates[cdkPhase].proceso=Number(r.value);cdkEl('cdk-response').textContent='';});
+cdkRadios.forEach(r=>r.onchange=()=>{cdkStates[cdkPhase].proceso=Number(r.value);entregaCDK();cdkEl('cdk-response').textContent='';});
 function cdkSelect(i){
  cdkPhase=i;
  cdkEl('cdk-momento').textContent=cdkRounds[i].phase+' · '+(i+1)+' de '+cdkRounds.length;
@@ -405,12 +498,31 @@ function cdkVerdict(round,st){
  const m=Number(st.ciclina===round.c)+Number(round.k.includes(st.quinasa))+Number(st.proceso===round.p);
  return m===3?'Correcto. '+round.why:m+' de 3 elecciones correctas para esta fase. '+(m===2?'Comprueba si el proceso y el complejo coinciden en el mismo momento del ciclo.':'Revisa qué complejo es más representativo de este momento y qué proceso regula.');
 }
-cdkEl('cdk-check').onclick=()=>{cdkEl('cdk-response').textContent=cdkVerdict(cdkRounds[cdkPhase],cdkStates[cdkPhase]);};
-cdkEl('cdk-clear').onclick=()=>{cdkStates[cdkPhase]={ciclina:null,quinasa:null,proceso:null};cdkSelect(cdkPhase);};
+cdkEl('cdk-check').onclick=()=>{const st=cdkStates[cdkPhase];if(st.ciclina&&st.quinasa&&st.proceso!==null)entregaCDK(true);cdkEl('cdk-response').textContent=cdkVerdict(cdkRounds[cdkPhase],cdkStates[cdkPhase]);};
+cdkEl('cdk-clear').onclick=()=>{cdkStates[cdkPhase]={ciclina:null,quinasa:null,proceso:null};entregaCDK();cdkSelect(cdkPhase);};
 document.querySelector('.wheel-figure a[href="#complejos-cdk"]').addEventListener('click',()=>{
  const match=[0,2,3,4][wheelIndex];
  if(match!==undefined)cdkSelect(match);
 });
 cdkSelect(0);
 
+function entregaExport(pdf){
+ const input=$('#entrega-nombre'), name=input.value.trim().replace(/\s+/g,' ');
+ const status=msg=>document.querySelectorAll('.entrega-estado').forEach(e=>e.textContent=msg);
+ if(name.split(' ').length<2){status('Escribe tu nombre y apellido para identificar el reporte.');input.focus();return;}
+ const report=entregaReport(name);
+ if(pdf){
+   $('#entrega-impresion').textContent=report;
+   document.body.classList.add('entrega-print');
+   try{window.print();}finally{document.body.classList.remove('entrega-print');}
+   return;
+ }
+ const safe=name.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\p{L}\p{N}]+/gu,'_').replace(/^_+|_+$/g,'').slice(0,80)||'Estudiante';
+ const url=URL.createObjectURL(new Blob(['\uFEFF',report],{type:'text/plain;charset=utf-8'}));
+ const a=document.createElement('a');a.href=url;a.download='Entrega_CicloCelular_'+safe+'.txt';a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+ status('Reporte generado. Revisa tus descargas y súbelo al enlace de entrega indicado por tu docente.');
+}
+document.querySelectorAll('.entrega-descarga').forEach(b=>b.onclick=()=>entregaExport(false));
+document.querySelectorAll('.entrega-pdf').forEach(b=>b.onclick=()=>entregaExport(true));
 </script></body></html>
